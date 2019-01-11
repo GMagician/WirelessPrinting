@@ -6,14 +6,14 @@ before_install:
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_1.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :1 -ac -screen 0 1280x1024x16"
   - sleep 3
   - export DISPLAY=:1.0
-  - wget http://downloads.arduino.cc/arduino-1.8.3-linux64.tar.xz
-  - tar xf arduino-1.8.3-linux64.tar.xz
+  - wget http://downloads.arduino.cc/arduino-1.8.5-linux64.tar.xz
+  - tar xf arduino-1.8.5-linux64.tar.xz
   
 install:
-  - arduino-1.8.3/arduino --pref "boardsmanager.additional.urls=http://arduino.esp8266.com/staging/package_esp8266com_index.json" --save-prefs
-  - arduino-1.8.3/arduino --install-boards esp8266:esp8266
-  - arduino-1.8.3/arduino --board $BD --save-prefs
-  - arduino-1.8.3/arduino --pref "compiler.warning_level=all" --save-prefs
+  - arduino-1.8.5/arduino --pref "boardsmanager.additional.urls=http://arduino.esp8266.com/staging/package_esp8266com_index.json" --save-prefs
+  - arduino-1.8.5/arduino --install-boards esp8266:esp8266
+  - arduino-1.8.5/arduino --board $BD --save-prefs
+  - arduino-1.8.5/arduino --pref "compiler.warning_level=all" --save-prefs
   - # For async; unfortunately these libraries are still not the default in arduino/esp8266 yet
   - mkdir -p $HOME/Arduino/libraries/
   - cd $HOME/Arduino/libraries/
@@ -24,11 +24,11 @@ install:
   - cd -
   
 script:
-  - #arduino-1.8.3/arduino --pref build.path=. --verify --verbose-build --board $BD $PWD/ESP8266WirelessPrint/ESP8266WirelessPrint.ino
+  - #arduino-1.8.5/arduino --pref build.path=. --verify --verbose-build --board $BD $PWD/ESP8266WirelessPrint/ESP8266WirelessPrint.ino
   - #BOARD=$(echo $BD | cut -d ":" -f 3)
   - #mv ./ESP8266WirelessPrint.ino.bin "ESP8266WirelessPrint_${BOARD}.bin"
   - #curl --upload-file "ESP8266WirelessPrint_${BOARD}.bin" "https://transfer.sh/ESP8266WirelessPrint_${BOARD}_$(git rev-parse --short HEAD).bin"
-  - arduino-1.8.3/arduino --pref build.path=. --verify --verbose-build --board $BD $PWD/ESP8266WirelessPrintAsync/ESP8266WirelessPrintAsync.ino
+  - arduino-1.8.5/arduino --pref build.path=. --verify --verbose-build --board $BD $PWD/ESP8266WirelessPrintAsync/ESP8266WirelessPrintAsync.ino
   - BOARD=$(echo $BD | cut -d ":" -f 3)
   - mv ./ESP8266WirelessPrintAsync.ino.bin "ESP8266WirelessPrintAsync_${BOARD}_$(git rev-parse --short HEAD).bin"
 
