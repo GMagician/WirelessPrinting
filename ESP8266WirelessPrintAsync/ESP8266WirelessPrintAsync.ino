@@ -24,10 +24,10 @@ DNSServer dns;
 // Configurable parameters
 #define SKETCH_VERSION "2.0"
 #define PRINTER_RX_BUFFER_SIZE 0        // This is firmwre 'RX_BUFFER_SIZE'. If such parameter is unknown please use 0
-#define TEMPERATURE_REPORT_INTERVAL 2   // Ask the printer for its temperarures status every 2 seconds
+#define TEMPERATURE_REPORT_INTERVAL 2   // Ask the printer for its temperatures status every 2 seconds
 #define MAX_SUPPORTED_EXTRUDERS 6       // Number of supported extruder
 #define USE_FAST_SD                     // Use Default fast SD clock, comment if your SD is an old or slow one.
-const int serialBauds[] = { 1000000, 500000, 250000, 125000, 57600 };   // Marlin valid bauds (removed very low baud)
+const int serialBauds[] = { 1000000, 500000, 250000, 125000, 57600 };   // Marlin valid bauds (removed very low bauds)
 
 // Information from M115
 String fwMachineType = "Unknown";
